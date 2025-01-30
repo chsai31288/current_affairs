@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ZeitVox</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+   <!-- Favicon -->
+   <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+   <!-- Google Web Fonts -->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">   
+
+   <!-- Font Awesome -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+   <!-- Libraries Stylesheet -->
+   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+   <!-- Customized Bootstrap Stylesheet -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+   <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+     <!-- navebar-->
+     {% include 'nave.html' %}
+
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <nav class="breadcrumb bg-transparent m-0 p-0">
+                <a class="breadcrumb-item" href="{% url 'index' %}">Home</a>
+                <a class="breadcrumb-item" href="{% url 'index' %}">Category</a>
+                <span class="breadcrumb-item active"><a href="{% url 'news' %}">News</a></span>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+<!--news-->
+<div class="container mx-auto py-8">
+    <h1 class="text-4xl font-bold text-center mb-8">Latest News</h1>
+
+    {% if articles %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for article in articles %}
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    {% if article.news_image_url %}
+                        <img src="{{ article.news_image_url }}" alt="{{ article.news_title }}" class="w-full h-48 object-cover">
+                    {% endif %}
+
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold mb-2">{{ article.news_title }}</h2>
+                        <p class="text-sm text-gray-600 mb-4">{{ article.news_summary }}</p>
+                        <p class="text-sm text-blue-500 font-bold">Category: {{ article.news_category }}</p>
+                        <a href="{{ article.news_link }}" target="_blank" class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Read More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-gray-600 text-lg">No articles found.</p>
+    {% endif %}
+</div>
+
+
+{% include 'footer.html' %}
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-dark back-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+ /* Basic CSS for styling */
+ 
+ .container {
+     max-width: 900px;
+     margin: 20px auto;
+     background: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .header {
+     text-align: center;
+     margin-bottom: 30px;
+ }
+ 
+ .header h1 {
+     color: #333;
+ }
+ 
+ .article {
+     border-bottom: 1px solid #ddd;
+     padding: 20px 0;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+ }
+ 
+ .article:last-child {
+     border-bottom: none;
+ }
+ 
+ .article img {
+     max-width: 250px;
+     height: auto;
+     border-radius: 5px;
+     flex-shrink: 0;
+ }
+ 
+ .article-content {
+     flex: 1;
+ }
+ 
+ .article h2 {
+     font-size: 20px;
+     margin: 0 0 10px 0;
+ }
+ 
+ .article p {
+     font-size: 16px;
+     color: #555;
+     line-height: 1.6;
+     margin: 5px 0;
+ }
+ 
+ .article a {
+     color: #007bff;
+     text-decoration: none;
+     font-weight: bold;
+ }
+ 
+ .article a:hover {
+     text-decoration: underline;
+ }
+ 
+ .category {
+     font-size: 14px;
+     font-style: italic;
+     color: #888;
+ }
+ /* Responsive Design */
+ 
+ @media (max-width: 768px) {
+     .article {
+         flex-direction: column;
+         align-items: center;
+     }
+     .article img {
+         max-width: 100%;
+         margin-bottom: 15px;
+     }
+ }
